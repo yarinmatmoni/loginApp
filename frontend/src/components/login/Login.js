@@ -27,7 +27,7 @@ function Login() {
 						></input>
 						<img
 							src={emailImage}
-							alt=''
+							alt='email'
 						></img>
 					</div>
 					<button type='submit'>LOGIN</button>
