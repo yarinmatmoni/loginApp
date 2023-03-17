@@ -3,15 +3,23 @@ import style from './Login.module.scss';
 import avatarImage from '../../images/avatarSvg.svg';
 import emailImage from '../../images/emailSvg.svg';
 import { Link } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { useFormikConfig } from '../../utils/formik';
 
 function Login() {
+	const formik = useFormikConfig();
+
 	return (
 		<div className={style.loginContainer}>
+			<Toaster
+				position='top-center'
+				reverseOrder={false}
+			></Toaster>
 			<div className={style.titles}>
 				<h1>Login</h1>
 				<p>Welcome Back, Please login to your account.</p>
 			</div>
-			<form>
+			<form onSubmit={formik.handleSubmit}>
 				<div className={style.profileImage}>
 					<img
 						src={avatarImage}
@@ -23,7 +31,7 @@ function Login() {
 						<input
 							type='email'
 							placeholder='Email'
-							required
+							{...formik.getFieldProps('email')}
 						></input>
 						<img
 							src={emailImage}
