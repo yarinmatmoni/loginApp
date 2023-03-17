@@ -1,0 +1,93 @@
+@import '../../styles/colors.scss';
+@import '../../styles/functions.scss';
+
+.recoverContainer {
+	background-color: $background-card;
+	padding: 20px 30px;
+	border-radius: 6px;
+	box-shadow: 2px 2px 5px 0px $shadow-color;
+
+	.titles {
+		text-align: center;
+
+		h1 {
+			color: $primary-color;
+		}
+
+		p {
+			// width: 90%;
+			margin: 15px auto;
+			color: $text-color-light;
+		}
+	}
+
+	form {
+		.formInputs {
+			gap: 15px;
+			display: flex;
+			flex-direction: column;
+			margin-top: 20px;
+
+			.inputContainer {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+
+				input {
+					width: 100%;
+					padding: 8px 32px 8px 8px;
+					font-size: 16px;
+					outline: none;
+					border: 1px solid $text-color-light;
+					color: $text-color-light;
+
+					&::placeholder {
+						color: $secondary-color;
+					}
+				}
+			}
+
+			button {
+				padding: 8px;
+				font-size: 16px;
+				border: none;
+				background-color: $primary-color;
+				color: white;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.bottom {
+		margin-top: 25px;
+		text-align: center;
+		color: $text-color-light;
+
+		p,
+		span {
+			font-size: 15px;
+			margin-top: 5px;
+		}
+
+		a {
+			text-decoration: none;
+			color: $text-color;
+			color: $primary-color;
+			font-weight: bold;
+		}
+	}
+
+	a {
+		text-decoration: none;
+		background-color: $background-card;
+		border: 1px solid $primary-color;
+		font-size: 16px;
+		text-align: center;
+		padding: 6px;
+		color: $text-color;
+	}
+}
+
+@include desktop {
+}

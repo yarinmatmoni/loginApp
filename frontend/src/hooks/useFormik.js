@@ -1,12 +1,9 @@
 import { useFormik } from 'formik';
-import { loginValidation } from '../utils/validate';
 
-export const useFormikConfig = (data) => {
-	const initData = data.data;
-
+export const useFormikConfig = (data, loginValidation) => {
 	const initObject = {};
 
-	for (const key of initData) {
+	for (const key of data) {
 		initObject[key] = '';
 	}
 

@@ -6,9 +6,10 @@ import passwordImage from '../../images/fingerprintSvg.svg';
 import { Link } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useFormikConfig } from '../../hooks/useFormik';
+import { loginValidation } from '../../utils/validate';
 
 function Login() {
-	const formik = useFormikConfig({ data: ['email', 'password'] });
+	const formik = useFormikConfig(['email', 'password'], loginValidation);
 
 	return (
 		<div className={style.loginContainer}>
