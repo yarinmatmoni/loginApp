@@ -1,7 +1,7 @@
 @import '../../styles/colors.scss';
 @import '../../styles/functions.scss';
 
-.loginContainer {
+.recoverContainer {
 	background-color: $background-card;
 	padding: 20px 30px;
 	border-radius: 6px;
@@ -15,32 +15,13 @@
 		}
 
 		p {
-			width: 90%;
+			// width: 90%;
 			margin: 15px auto;
 			color: $text-color-light;
 		}
 	}
 
 	form {
-		.profileImage {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			overflow: hidden;
-			margin-top: 15px;
-			padding: 5px;
-
-			img {
-				cursor: pointer;
-				background-color: $background-color;
-				border-radius: 50%;
-				padding: 5px;
-				height: 100px;
-				width: 100px;
-				box-shadow: 2px 2px 5px 0px $shadow-color;
-			}
-		}
-
 		.formInputs {
 			gap: 15px;
 			display: flex;
@@ -64,17 +45,6 @@
 					&::placeholder {
 						color: $secondary-color;
 					}
-
-					&:focus + img {
-						filter: invert(19%) sepia(72%) saturate(7381%) hue-rotate(201deg) brightness(99%) contrast(92%);
-					}
-				}
-
-				img {
-					height: 25px;
-					width: 25px;
-					position: absolute;
-					right: 8px;
 				}
 			}
 
@@ -107,18 +77,17 @@
 			font-weight: bold;
 		}
 	}
+
+	a {
+		text-decoration: none;
+		background-color: $background-card;
+		border: 1px solid $primary-color;
+		font-size: 16px;
+		text-align: center;
+		padding: 6px;
+		color: $text-color;
+	}
 }
 
 @include desktop {
-	.loginContainer {
-		form {
-			.profileImage {
-				img {
-					cursor: pointer;
-					height: 130px;
-					width: 130px;
-				}
-			}
-		}
-	}
 }
