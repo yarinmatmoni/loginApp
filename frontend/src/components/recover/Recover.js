@@ -17,8 +17,13 @@ function Recover() {
 							placeholder='OTP'
 						></input>
 					</div>
-					<button type='submit'>LOGIN</button>
+					<button type='submit'>RECOVER</button>
 					<Link to={'/'}>BACK</Link>
+				</div>
+				<div className={style.bottom}>
+					<p>
+						Can't fet OTP? <Link to={'/'}>Resend Now</Link>
+					</p>
 				</div>
 			</form>
 		</div>
