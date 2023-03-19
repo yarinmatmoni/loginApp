@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './Login.module.scss';
-// import avatarImage from '../../images/avatarSvg.svg';
 import emailImage from '../../images/emailSvg.svg';
 import passwordImage from '../../images/fingerprintSvg.svg';
 import { Link } from 'react-router-dom';
@@ -22,12 +21,6 @@ function Login() {
 				<p>Welcome Back, Please login to your account.</p>
 			</div>
 			<form onSubmit={formik.handleSubmit}>
-				{/* <div className={style.profileImage}>
-					<img
-						src={avatarImage}
-						alt='profile'
-					></img>
-				</div> */}
 				<div className={style.formInputs}>
 					<div className={style.inputContainer}>
 						<input

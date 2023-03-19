@@ -1,7 +1,7 @@
 @import '../../styles/colors.scss';
 @import '../../styles/functions.scss';
 
-.loginContainer {
+.registerContainer {
 	background-color: $background-card;
 	padding: 20px 30px;
 	border-radius: 6px;
@@ -14,15 +14,32 @@
 		h1 {
 			color: $primary-color;
 		}
-
-		p {
-			width: 90%;
-			margin: 15px auto;
-			color: $text-color-light;
-		}
 	}
 
 	form {
+		.profileImage {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			margin-top: 15px;
+			padding: 5px;
+
+			img {
+				cursor: pointer;
+				background-color: $background-color;
+				border-radius: 50%;
+				padding: 5px;
+				height: 100px;
+				width: 100px;
+				box-shadow: 2px 2px 5px 0px $shadow-color;
+			}
+		}
+
+		input[type='file'] {
+			display: none;
+		}
+
 		.formInputs {
 			gap: 15px;
 			display: flex;
@@ -37,7 +54,7 @@
 
 				input {
 					width: 100%;
-					padding: 8px 32px 8px 8px;
+					padding: 8px;
 					font-size: 16px;
 					outline: none;
 					border: 1px solid $text-color-light;
@@ -46,17 +63,6 @@
 					&::placeholder {
 						color: $secondary-color;
 					}
-
-					&:focus + img {
-						filter: invert(19%) sepia(72%) saturate(7381%) hue-rotate(201deg) brightness(99%) contrast(92%);
-					}
-				}
-
-				img {
-					height: 25px;
-					width: 25px;
-					position: absolute;
-					right: 8px;
 				}
 			}
 
@@ -70,37 +76,7 @@
 			}
 		}
 	}
-
-	.bottom {
-		margin-top: 25px;
-		text-align: center;
-		color: $text-color-light;
-
-		p,
-		span {
-			font-size: 15px;
-			margin-top: 5px;
-		}
-
-		a {
-			text-decoration: none;
-			color: $text-color;
-			color: $primary-color;
-			font-weight: bold;
-		}
-	}
 }
 
 @include desktop {
-	.loginContainer {
-		form {
-			.profileImage {
-				img {
-					cursor: pointer;
-					height: 130px;
-					width: 130px;
-				}
-			}
-		}
-	}
 }
