@@ -6,6 +6,7 @@
 	padding: 20px 30px;
 	border-radius: 6px;
 	box-shadow: 2px 2px 5px 0px $shadow-color;
+	width: 330px;
 
 	.titles {
 		text-align: center;
@@ -22,24 +23,24 @@
 	}
 
 	form {
-		.profileImage {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			overflow: hidden;
-			margin-top: 15px;
-			padding: 5px;
+		// .profileImage {
+		// 	display: flex;
+		// 	align-items: center;
+		// 	justify-content: center;
+		// 	overflow: hidden;
+		// 	margin-top: 15px;
+		// 	padding: 5px;
 
-			img {
-				cursor: pointer;
-				background-color: $background-color;
-				border-radius: 50%;
-				padding: 5px;
-				height: 100px;
-				width: 100px;
-				box-shadow: 2px 2px 5px 0px $shadow-color;
-			}
-		}
+		// 	img {
+		// 		cursor: pointer;
+		// 		background-color: $background-color;
+		// 		border-radius: 50%;
+		// 		padding: 5px;
+		// 		height: 100px;
+		// 		width: 100px;
+		// 		box-shadow: 2px 2px 5px 0px $shadow-color;
+		// 	}
+		// }
 
 		.formInputs {
 			gap: 15px;

@@ -1,7 +1,7 @@
 @import '../../styles/colors.scss';
 @import '../../styles/functions.scss';
 
-.recoverContainer {
+.resetContainer {
 	background-color: $background-card;
 	padding: 20px 30px;
 	border-radius: 6px;
@@ -18,11 +18,29 @@
 		p {
 			margin: 15px auto;
 			color: $text-color-light;
-			max-width: 280px;
 		}
 	}
 
 	form {
+		.profileImage {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			margin-top: 15px;
+			padding: 5px;
+
+			img {
+				cursor: pointer;
+				background-color: $background-color;
+				border-radius: 50%;
+				padding: 5px;
+				height: 100px;
+				width: 100px;
+				box-shadow: 2px 2px 5px 0px $shadow-color;
+			}
+		}
+
 		.formInputs {
 			gap: 15px;
 			display: flex;
@@ -46,11 +64,21 @@
 					&::placeholder {
 						color: $secondary-color;
 					}
+
+					&:focus + img {
+						filter: invert(19%) sepia(72%) saturate(7381%) hue-rotate(201deg) brightness(99%) contrast(92%);
+					}
+				}
+
+				img {
+					height: 25px;
+					width: 25px;
+					position: absolute;
+					right: 8px;
 				}
 			}
 
 			button {
-				margin-top: 10px;
 				padding: 8px;
 				font-size: 16px;
 				border: none;
@@ -58,35 +86,9 @@
 				color: white;
 				cursor: pointer;
 			}
-
-			a {
-				text-decoration: none;
-				background-color: $background-card;
-				border: 1px solid $primary-color;
-				font-size: 16px;
-				text-align: center;
-				padding: 6px;
-				color: $text-color;
-			}
-		}
-
-		.bottom {
-			margin-top: 25px;
-			text-align: center;
-			color: $text-color-light;
-
-			p,
-			span {
-				font-size: 15px;
-				margin-top: 5px;
-			}
-
-			a {
-				text-decoration: none;
-				color: $text-color;
-				color: $primary-color;
-				font-weight: bold;
-			}
 		}
 	}
+}
+
+@include desktop {
 }
