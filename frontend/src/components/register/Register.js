@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Register.module.scss';
 import avatarImage from '../../images/avatarSvg.svg';
 import { registerForm } from '../../utils/registerForm';
 import { Toaster } from 'react-hot-toast';
 import { useFormikConfig } from '../../hooks/useFormik';
 import { signUpValidation } from '../../utils/validate';
+import { convertBase64 } from '../../utils/convertTo64';
 
 //TODO: Add option go to login page for
 //TODO: handle upload image
 
 function Register() {
+	const [file, setFile] = useState();
 	const formikData = [];
 	registerForm.map((data) => formikData.push(data.name));
-	const formik = useFormikConfig(formikData, signUpValidation);
+	const formik = useFormikConfig(formikData, signUpValidation, file);
+
+	const handleUpload = async (event) => {
+		const base64 = await convertBase64(event.target.files[0]);
+		setFile(base64);
+	};
 
 	return (
 		<div className={style.registerContainer}>
@@ -28,7 +35,7 @@ function Register() {
 					<div className={style.profileImage}>
 						<label htmlFor='profileImage'>
 							<img
-								src={avatarImage}
+								src={file || avatarImage}
 								alt='profile'
 							></img>
 						</label>
@@ -36,6 +43,7 @@ function Register() {
 							type='file'
 							id='profileImage'
 							name='profileImage'
+							onChange={handleUpload}
 						></input>
 					</div>
 					<div className={style.formInputs}>
