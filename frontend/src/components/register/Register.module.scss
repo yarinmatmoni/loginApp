@@ -40,6 +40,10 @@
 			display: none;
 		}
 
+		input[type='date']::-webkit-calendar-picker-indicator {
+			filter: invert(88%) sepia(6%) saturate(1245%) hue-rotate(181deg) brightness(94%) contrast(84%);
+		}
+
 		.formInputs {
 			gap: 15px;
 			display: flex;

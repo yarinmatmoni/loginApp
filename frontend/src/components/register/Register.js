@@ -2,18 +2,27 @@ import React from 'react';
 import style from './Register.module.scss';
 import avatarImage from '../../images/avatarSvg.svg';
 import { registerForm } from '../../utils/registerForm';
+import { Toaster } from 'react-hot-toast';
+import { useFormikConfig } from '../../hooks/useFormik';
+import { signUpValidation } from '../../utils/validate';
 
-//TODO: Date type - fix logo color + limit the option to choose future date.
 //TODO: Add option go to login page for
-//TODO: validation form
 
 function Register() {
+	const formikData = [];
+	registerForm.map((data) => formikData.push(data.placeHolder));
+	const formik = useFormikConfig(formikData, signUpValidation);
+
 	return (
 		<div className={style.registerContainer}>
+			<Toaster
+				position='top-center'
+				reverseOrder={false}
+			></Toaster>
 			<div className={style.titles}>
 				<h1>Register</h1>
 			</div>
-			<form>
+			<form onSubmit={formik.handleSubmit}>
 				<div className={style.formInputs}>
 					<div className={style.profileImage}>
 						<label htmlFor='profileImage'>
@@ -37,6 +46,8 @@ function Register() {
 								<input
 									placeholder={input.placeHolder}
 									type={input.type}
+									{...formik.getFieldProps(`${input.placeHolder}`)}
+									max={input.name === 'birthDay' ? new Date().toISOString().split('T')[0] : undefined}
 								/>
 							</div>
 						))}

@@ -15,6 +15,11 @@ export const resetValidation = async (values) => {
 	return errors;
 };
 
+export const signUpValidation = async (values) => {
+	const errors = signUpVerify({}, values);
+	return errors;
+};
+
 //------------------------------ functions ----------------------------------//
 
 const loginVerify = (error = {}, values) => {
@@ -33,5 +38,13 @@ const resetVerify = (error = {}, values) => {
 	if (!values.password) error.password = toast.error('Password Required');
 	else if (!values.confirmPassword) error.confirmPassword = toast.error('Confirm Password Required');
 	else if (values.password !== values.confirmPassword) error.exist = toast.error('Password not match');
+	return error;
+};
+
+//TODO: more validations
+const signUpVerify = (error = {}, values) => {
+	Object.keys(values).forEach((key) => {
+		if (!values[key]) return (error.exist = toast.error(`${key} Required`));
+	});
 	return error;
 };
