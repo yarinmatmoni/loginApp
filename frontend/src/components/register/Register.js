@@ -7,10 +7,11 @@ import { useFormikConfig } from '../../hooks/useFormik';
 import { signUpValidation } from '../../utils/validate';
 
 //TODO: Add option go to login page for
+//TODO: handle upload image
 
 function Register() {
 	const formikData = [];
-	registerForm.map((data) => formikData.push(data.placeHolder));
+	registerForm.map((data) => formikData.push(data.name));
 	const formik = useFormikConfig(formikData, signUpValidation);
 
 	return (
@@ -46,7 +47,7 @@ function Register() {
 								<input
 									placeholder={input.placeHolder}
 									type={input.type}
-									{...formik.getFieldProps(`${input.placeHolder}`)}
+									{...formik.getFieldProps(`${input.name}`)}
 									max={input.name === 'birthDay' ? new Date().toISOString().split('T')[0] : undefined}
 								/>
 							</div>

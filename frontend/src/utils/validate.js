@@ -43,8 +43,11 @@ const resetVerify = (error = {}, values) => {
 
 //TODO: more validations
 const signUpVerify = (error = {}, values) => {
-	Object.keys(values).forEach((key) => {
-		if (!values[key]) return (error.exist = toast.error(`${key} Required`));
-	});
+	if (!values.firstName) error.firstName = toast.error('First Name Required');
+	else if (!values.lastName) error.lastName = toast.error('Last Name Required');
+	else if (!values.userName) error.userName = toast.error('User Name Required');
+	else if (!values.email) error.email = toast.error('Email Required');
+	else if (!values.birthDay) error.birthDay = toast.error('BirthDay Required');
+	else if (!values.password) error.password = toast.error('Password Required');
 	return error;
 };
