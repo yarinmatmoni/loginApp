@@ -30,9 +30,10 @@
 				background-color: $background-color;
 				border-radius: 50%;
 				padding: 5px;
-				height: 100px;
-				width: 100px;
+				height: 150px;
+				width: 150px;
 				box-shadow: 2px 2px 5px 0px $shadow-color;
+				object-fit: cover;
 			}
 		}
 
@@ -48,7 +49,6 @@
 			gap: 15px;
 			display: flex;
 			flex-direction: column;
-			margin-top: 20px;
 
 			.inputContainer {
 				display: flex;
@@ -83,4 +83,30 @@
 }
 
 @include desktop {
+	.registerContainer {
+		width: 660px;
+
+		form {
+			.profileImage img {
+				height: 200px;
+				width: 200px;
+			}
+
+			.formInputs {
+				flex-direction: initial;
+				flex-wrap: wrap;
+				justify-content: center;
+
+				.inputContainer {
+					input {
+						width: 280px;
+					}
+				}
+
+				button {
+					width: 200px;
+				}
+			}
+		}
+	}
 }
