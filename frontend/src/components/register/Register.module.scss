@@ -1,0 +1,112 @@
+@import '../../styles/colors.scss';
+@import '../../styles/functions.scss';
+
+.registerContainer {
+	background-color: $background-card;
+	padding: 20px 30px;
+	border-radius: 6px;
+	box-shadow: 2px 2px 5px 0px $shadow-color;
+	width: 330px;
+
+	.titles {
+		text-align: center;
+
+		h1 {
+			color: $primary-color;
+		}
+	}
+
+	form {
+		.profileImage {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			margin-top: 15px;
+			padding: 5px;
+
+			img {
+				cursor: pointer;
+				background-color: $background-color;
+				border-radius: 50%;
+				padding: 5px;
+				height: 150px;
+				width: 150px;
+				box-shadow: 2px 2px 5px 0px $shadow-color;
+				object-fit: cover;
+			}
+		}
+
+		input[type='file'] {
+			display: none;
+		}
+
+		input[type='date']::-webkit-calendar-picker-indicator {
+			filter: invert(88%) sepia(6%) saturate(1245%) hue-rotate(181deg) brightness(94%) contrast(84%);
+		}
+
+		.formInputs {
+			gap: 15px;
+			display: flex;
+			flex-direction: column;
+
+			.inputContainer {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+
+				input {
+					width: 100%;
+					padding: 8px;
+					font-size: 16px;
+					outline: none;
+					border: 1px solid $text-color-light;
+					color: $text-color-light;
+
+					&::placeholder {
+						color: $secondary-color;
+					}
+				}
+			}
+
+			button {
+				padding: 8px;
+				font-size: 16px;
+				border: none;
+				background-color: $primary-color;
+				color: white;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@include desktop {
+	.registerContainer {
+		width: 660px;
+
+		form {
+			.profileImage img {
+				height: 200px;
+				width: 200px;
+			}
+
+			.formInputs {
+				flex-direction: initial;
+				flex-wrap: wrap;
+				justify-content: center;
+
+				.inputContainer {
+					input {
+						width: 280px;
+					}
+				}
+
+				button {
+					width: 200px;
+				}
+			}
+		}
+	}
+}
