@@ -8,7 +8,6 @@ import { signUpValidation } from '../../utils/validate';
 import { convertBase64 } from '../../utils/convertTo64';
 
 //TODO: Add option go to login page for
-//TODO: handle upload image
 
 function Register() {
 	const [file, setFile] = useState();
