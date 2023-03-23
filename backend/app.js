@@ -23,11 +23,11 @@ db.once('open', () => {
 	console.log('Connected to mongoDB');
 });
 
-const indexRouter = require('./routes/index');
-app.use('/', indexRouter);
+// const indexRouter = require('./routes/index');
+// app.use('/', indexRouter);
 
-const registerRouter = require('./routes/registerRoutes');
-app.use('/register', registerRouter);
+const authRouter = require('./routes/authRoutes');
+app.use('/auth', authRouter);
 
 app.listen(port, () => {
 	console.log('Server is running on port ' + port);
