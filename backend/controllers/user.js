@@ -8,52 +8,29 @@ const getUser = async (req, res) => {
 		const user = await User.findOne({ userName: userName });
 
 		if (!user) return res.status(501).send({ error: 'User not found' });
-		return res.status(200).send(user);
+		const { password, ...rest } = Object.assign({}, user.toJSON());
+
+		return res.status(200).send(rest);
 	} catch (error) {
 		return res.status(404).send({ error: 'Cannot find user data' });
 	}
 };
 
-//FIXME: example to GET method by id
-// const getExampleById = async (req, res) => {
-// 	if (req.params.id === null || req.params.id === undefined) {
-// 		res.status(400).send({
-// 			status: 'Fail',
-// 			error: error.message,
-// 		});
-// 	}
+const updateUser = async (req, res) => {
+	try {
+		const id = req.query.id;
+		if (id) {
+			const body = req.body;
+			User.updateOne({ _id: id }, body, (error) => {
+				if (error) throw error;
+				return res.status(200).send('User update successfully');
+			});
+		} else {
+			return res.status(401).send({ error: 'User not found' });
+		}
+	} catch (error) {
+		return res.status(401).send({ error });
+	}
+};
 
-// 	try {
-// 		const example = await Example.findById(req.params.id);
-// 		res.status(200).send(example);
-// 	} catch (error) {
-// 		res.status(400).send({
-// 			status: 'Fail',
-// 			error: error.message,
-// 		});
-// 	}
-// };
-
-//FIXME: example to POST method
-// const newTest = (req, res) => {
-// 	const example = new Example({
-// 		name: req.body.name,
-// 		massage: req.body.massage,
-// 	});
-
-// 	example.save((error, example) => {
-// 		if (error) {
-// 			res.status(400).send({
-// 				status: 'Fail',
-// 				error: error.message,
-// 			});
-// 		} else {
-// 			res.status(200).send({
-// 				status: 'OK',
-// 				example: example,
-// 			});
-// 		}
-// 	});
-// };
-
-module.exports = { getUser };
+module.exports = { getUser, updateUser };
