@@ -29,6 +29,9 @@ db.once('open', () => {
 const authRouter = require('./routes/authRoutes');
 app.use('/auth', authRouter);
 
+const userRouter = require('./routes/userRoutes');
+app.use('/user', userRouter);
+
 app.listen(port, () => {
 	console.log('Server is running on port ' + port);
 });

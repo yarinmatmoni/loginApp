@@ -1,17 +1,18 @@
 const User = require('../models/userModel');
 
-//FIXME: example to GET method
-// const getExamplesList = async (req, res) => {
-// 	try {
-// 		const examplesList = await Example.find();
-// 		res.status(200).send(examplesList);
-// 	} catch (error) {
-// 		res.status(400).send({
-// 			status: 'Fail',
-// 			error: error.message,
-// 		});
-// 	}
-// };
+const getUser = async (req, res) => {
+	const { userName } = req.params;
+
+	try {
+		if (!userName) return res.status(501).send({ error: 'Invalid Username' });
+		const user = await User.findOne({ userName: userName });
+
+		if (!user) return res.status(501).send({ error: 'User not found' });
+		return res.status(200).send(user);
+	} catch (error) {
+		return res.status(404).send({ error: 'Cannot find user data' });
+	}
+};
 
 //FIXME: example to GET method by id
 // const getExampleById = async (req, res) => {
@@ -55,4 +56,4 @@ const User = require('../models/userModel');
 // 	});
 // };
 
-module.exports = {};
+module.exports = { getUser };
