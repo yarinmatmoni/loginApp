@@ -18,7 +18,7 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
 	try {
-		const id = req.query.id;
+		const id = req.user._id;
 		if (id) {
 			const body = req.body;
 			User.updateOne({ _id: id }, body, (error) => {
