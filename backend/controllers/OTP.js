@@ -20,4 +20,12 @@ const verifyOTP = async (req, res) => {
 	return res.status(400).send({ error: 'Invalid OTP' });
 };
 
-module.exports = { generateOTP, verifyOTP };
+const resetSession = async (req, res) => {
+	if (req.app.locals.resetSession) {
+		req.app.locals.resetSession = false;
+		return res.status(200).send('Access granted');
+	}
+	return res.status(440).send({ error: 'Session expired' });
+};
+
+module.exports = { generateOTP, verifyOTP, resetSession };

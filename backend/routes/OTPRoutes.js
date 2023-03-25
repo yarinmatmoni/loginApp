@@ -8,4 +8,6 @@ router.get('/generateOTP', VerifyUser, localVariableOTP, OTP.generateOTP);
 
 router.get('/verifyOTP', OTP.verifyOTP);
 
+router.get('/resetSession', OTP.resetSession);
+
 module.exports = router;
