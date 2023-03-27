@@ -1,10 +1,8 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
-const Mailgen = require('mailgen');
 
-const register = async (req, res) => {
+const register = async (req, res, next) => {
 	try {
 		const { userName, firstName, lastName, email, password, birthday, profileImage } = req.body;
 		const existUser = await User.findOne({ email: email });
@@ -28,44 +26,12 @@ const register = async (req, res) => {
 
 		newUser.save(async (error, newUser) => {
 			if (error) return res.status(400).send(error.message);
-			//////////
-			const config = {
-				service: 'gmail',
-				auth: {
-					user: process.env.EMAIL,
-					pass: process.env.EMAIL_PASSWORD,
-				},
+			req.userData = {
+				email: email,
+				firstName: firstName,
+				lastName: lastName,
 			};
-			const transporter = nodemailer.createTransport(config);
-
-			const mailGenerator = new Mailgen({
-				theme: 'default',
-				product: {
-					name: 'mailgen',
-					link: 'https://mailgen.js/',
-				},
-			});
-
-			const response = {
-				body: {
-					intro: 'Welcome!, You are sign up successfully',
-				},
-			};
-
-			const mail = mailGenerator.generate(response);
-
-			const message = {
-				from: process.env.EMAIL,
-				to: email,
-				subject: `Welcome ${firstName} ${lastName}`,
-				html: mail,
-			};
-
-			const mailResponse = await transporter.sendMail(message);
-			if (!mailResponse) return res.status(500).send({ error });
-			return res.status(200).send('Email sent');
-			//////////
-			// res.status(200).send(newUser);
+			next();
 		});
 	} catch (error) {
 		return res.status(500).send(error);
