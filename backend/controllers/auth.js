@@ -2,7 +2,7 @@ const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const register = async (req, res) => {
+const register = async (req, res, next) => {
 	try {
 		const { userName, firstName, lastName, email, password, birthday, profileImage } = req.body;
 		const existUser = await User.findOne({ email: email });
@@ -24,9 +24,14 @@ const register = async (req, res) => {
 			profileImage: profileImage || '',
 		});
 
-		newUser.save((error, newUser) => {
+		newUser.save(async (error, newUser) => {
 			if (error) return res.status(400).send(error.message);
-			res.status(200).send(newUser);
+			req.userData = {
+				email: email,
+				firstName: firstName,
+				lastName: lastName,
+			};
+			next();
 		});
 	} catch (error) {
 		return res.status(500).send(error);
